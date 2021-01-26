@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        public: false
+        autowire: true
+        autoconfigure: true
+
+    Pimcore\Bundle\EcommerceFrameworkBundle\PaymentManager\Payment\Hobex:
+        arguments:
+            $options: []
+        tags:
+            - { name: pimcore_ecommerce.payment.provider, key: 'hobex' }
+
+    Pimcore\Bundle\EcommerceFrameworkBundle\Hobex\Installer:
+        public: true
