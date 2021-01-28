@@ -1,6 +1,6 @@
 # Pimcore E-Commerce Framework Payment Provider - Hobex
 
-## Official Hobex Documentation
+### Official Hobex Documentation
 * [Getting Started](https://hobex.docs.oppwa.com/)
 * [COPYandPAY Integration Guide](https://hobex.docs.oppwa.com/tutorials/integration-guide)
 * [API Reference](https://hobex.docs.oppwa.com/reference/parameters) 
@@ -9,8 +9,27 @@
 Hobex does not require an additional PHP-SDK. You just need to get a test account from your integration partner.
 
 
-## Configuration
+## Installation
 
+Install latest version with composer:
+```bash 
+composer require pimcore/payment-provider-hobex
+```
+
+Enable bundle via console or extensions manager in Pimcore backend:
+```bash
+php bin/console pimcore:bundle:enable PimcorePaymentProviderHobexBundle
+php bin/console pimcore:bundle:install PimcorePaymentProviderHobexBundle
+```
+
+## Configuration
+The Payment Manager is responsible for implementation
+of different Payment Provider to integrate them into the framework. 
+
+For more information about Payment Manager, see 
+[Payment Manager Docs](../13_Checkout_Manager/07_Integrating_Payment.md). 
+
+Configure payment provider in the `pimcore_ecommerce_config.payment_manager` config section: 
 ```yaml
 pimcore_ecommerce_framework:
     
