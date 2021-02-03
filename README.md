@@ -62,6 +62,12 @@ pimcore_ecommerce_framework:
             default: ~                              
 ```
 
+Payment Information: Order payment section "Payment Informations" stores information about every payment trial by Customer.
+
+Add additional fields in "PaymentInfo" fieldcollection, so that Order Manager stores information in Order object:
+![PaymentInfo Additional Data](./doc/img/hobex_paymentinfo.png)
+
+
 Hobex is compatible with Pimcore 10, so for Pimcore 6 you may have to add the following line to your config.yml:
 ```yml
     - { resource: '@PimcoreEcommerceFrameworkBundle/Resources/config/v7_configurations.yml' }
