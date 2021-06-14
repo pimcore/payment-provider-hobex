@@ -26,7 +26,7 @@ class PimcorePaymentProviderHobexBundle extends AbstractPimcoreBundle
     /**
      * {@inheritdoc}
      */
-    protected function getComposerPackageName()
+    protected function getComposerPackageName(): string
     {
         return 'pimcore/payment-provider-hobex';
     }
