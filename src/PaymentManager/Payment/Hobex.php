@@ -36,7 +36,6 @@ use Symfony\Component\Lock\LockFactory;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Templating\EngineInterface;
 
-
 class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInterface
 {
     use LoggerAwareTrait;
@@ -101,7 +100,6 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
     {
         return $this->template;
     }
-
 
     /**
      * Check options that have been passed by the main configuration
