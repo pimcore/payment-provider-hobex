@@ -37,8 +37,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Templating\EngineInterface;
 
 /*
- * @method \PPimcore\Model\DataObject\OnlineShopOrder getList()
- * @method \PPimcore\Model\DataObject\OnlineShopOrder getPaymentProvider()
+ * @method \Pimcore\Model\DataObject\OnlineShopOrder getList()
+ * @method \Pimcore\Model\DataObject\OnlineShopOrder getPaymentProvider()
  */
 class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInterface
 {
