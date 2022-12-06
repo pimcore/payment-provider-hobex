@@ -105,7 +105,6 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
         return $this->template;
     }
 
-
     /**
      * Check options that have been passed by the main configuration
      *
