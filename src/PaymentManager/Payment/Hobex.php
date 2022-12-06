@@ -36,6 +36,10 @@ use Symfony\Component\Lock\LockFactory;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Templating\EngineInterface;
 
+/*
+ * @method \PPimcore\Model\DataObject\OnlineShopOrder getList()
+ * @method \PPimcore\Model\DataObject\OnlineShopOrder getPaymentProvider()
+ */
 class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInterface
 {
     use LoggerAwareTrait;
@@ -92,6 +96,15 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
     {
         return $this->config;
     }
+
+    /**
+     * @return EngineInterface
+     */
+    public function getTemplate()
+    {
+        return $this->template;
+    }
+
 
     /**
      * Check options that have been passed by the main configuration
@@ -434,7 +447,7 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
         if ($order->getLastPaymentInfo()) {
             $internalPaymentId = $order->getLastPaymentInfo()->getInternalPaymentId();
             if ($internalPaymentId) {
-                $txtId = (int) preg_replace('/\D/', 0, str_replace('payment_', '', $internalPaymentId));
+                $txtId = (int) preg_replace('/\D/', '0', str_replace('payment_', '', $internalPaymentId));
 
                 return $txtId;
             }
