@@ -94,6 +94,14 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
     }
 
     /**
+     * @return EngineInterface
+     */
+    public function getTemplate()
+    {
+        return $this->template;
+    }
+
+    /**
      * Check options that have been passed by the main configuration
      *
      * @param OptionsResolver $resolver
@@ -434,7 +442,7 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
         if ($order->getLastPaymentInfo()) {
             $internalPaymentId = $order->getLastPaymentInfo()->getInternalPaymentId();
             if ($internalPaymentId) {
-                $txtId = (int) preg_replace('/\D/', 0, str_replace('payment_', '', $internalPaymentId));
+                $txtId = (int) preg_replace('/\D/', '0', str_replace('payment_', '', $internalPaymentId));
 
                 return $txtId;
             }
@@ -490,7 +498,7 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
             'objectbricks' => ['PaymentProviderHobex'],
 
         ]);
-        $list->setCondition('PaymentProviderHobex.auth_checkoutId = ?', $checkoutId);
+        $list->setCondition('PaymentProviderHobex.auth_checkoutId = ?', [$checkoutId]);
         if ($list->count() > 0) {
             /** @var OnlineShopOrder $order */
             $order = $list->current();
