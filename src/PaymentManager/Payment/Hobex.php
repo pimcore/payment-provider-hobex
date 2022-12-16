@@ -498,7 +498,7 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
             'objectbricks' => ['PaymentProviderHobex'],
 
         ]);
-        $list->setCondition('PaymentProviderHobex.auth_checkoutId = ?', $checkoutId);
+        $list->setCondition('PaymentProviderHobex.auth_checkoutId = ?', [$checkoutId]);
         if ($list->count() > 0) {
             /** @var OnlineShopOrder $order */
             $order = $list->current();
