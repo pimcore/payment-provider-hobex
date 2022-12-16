@@ -49,6 +49,7 @@ declare(strict_types=1);
 namespace Pimcore\Model\DataObject;
 
 use Pimcore\Model\DataObject\Exception\InheritanceParentNotFoundException;
+use Pimcore\Model\DataObject\OnlineShopOrder\PaymentProvider;
 use Pimcore\Model\DataObject\PreGetValueHookInterface;
 use Pimcore\Model\Element\AbstractElement;
 
@@ -1338,7 +1339,7 @@ class OnlineShopOrder extends \Pimcore\Bundle\EcommerceFrameworkBundle\Model\Abs
         return $this;
     }
 
-    public function getPaymentProvider(): ?\Pimcore\Model\DataObject\Objectbrick
+    public function getPaymentProvider(): ?PaymentProvider
     {
         $data = $this->paymentProvider;
         if (!$data) {
