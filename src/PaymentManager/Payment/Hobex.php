@@ -31,7 +31,6 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Intl\Exception\NotImplementedException;
 use Symfony\Component\Lock\LockFactory;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Templating\EngineInterface;
@@ -256,13 +255,9 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
     /**
      * Handles response of payment provider and creates payment status object.
      *
-     * @param array|StatusInterface $response
-     *
-     * @return StatusInterface
-     *
      * @throws \Exception
      */
-    public function handleResponse($response)
+    public function handleResponse(StatusInterface | array $response): StatusInterface
     {
         $responseStatus = StatusInterface::STATUS_PENDING;
         $checkoutId = $response['id'];
@@ -341,20 +336,12 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
         return $responseStatus;
     }
 
-    /**
-     * @inheritdoc
-     *
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'Hobex';
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getAuthorizedData()
+    public function getAuthorizedData(): array
     {
         return $this->authorizedData;
     }
@@ -388,16 +375,11 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
      *  if price is given, recurPayment command is executed
      *  if no price is given, amount from authorized Data is used and deposit command is executed
      *
-     * @param PriceInterface $price
-     * @param string $reference
-     *
-     * @return StatusInterface
-     *
      * @throws \Exception
      */
-    public function executeDebit(PriceInterface $price = null, $reference = null)
+    public function executeDebit(PriceInterface $price = null, string $reference = null): StatusInterface
     {
-        throw new NotImplementedException('executeDebit is not implemented yet.');
+        throw new \Exception('executeDebit is not implemented yet.');
     }
 
     /**
@@ -411,9 +393,9 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
      *
      * @throws \Exception
      */
-    public function executeCredit(PriceInterface $price, $reference, $transactionId)
+    public function executeCredit(PriceInterface $price, string $reference, string $transactionId): StatusInterface
     {
-        throw new NotImplementedException('executeCredit is not implemented yet.');
+        throw new \Exception('executeCredit is not implemented yet.');
     }
 
     /**
