@@ -31,7 +31,6 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Intl\Exception\NotImplementedException;
 use Symfony\Component\Lock\LockFactory;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Templating\EngineInterface;
@@ -380,7 +379,7 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
      */
     public function executeDebit(PriceInterface $price = null, string $reference = null): StatusInterface
     {
-        throw new NotImplementedException('executeDebit is not implemented yet.');
+        throw new \Exception('executeDebit is not implemented yet.');
     }
 
     /**
@@ -396,7 +395,7 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
      */
     public function executeCredit(PriceInterface $price, string $reference, string $transactionId): StatusInterface
     {
-        throw new NotImplementedException('executeCredit is not implemented yet.');
+        throw new \Exception('executeCredit is not implemented yet.');
     }
 
     /**
