@@ -31,7 +31,7 @@ class PimcorePaymentProviderHobexBundle extends AbstractPimcoreBundle
         return 'pimcore/payment-provider-hobex';
     }
 
-    public function getInstaller()
+    public function getInstaller(): Installer
     {
         return $this->container->get(Installer::class);
     }
