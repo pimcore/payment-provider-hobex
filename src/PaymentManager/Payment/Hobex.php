@@ -258,7 +258,7 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
      *
      * @throws \Exception
      */
-    public function handleResponse(StatusInterface|array $response): StatusInterface
+    public function handleResponse(StatusInterface | array $response): StatusInterface
     {
         $responseStatus = StatusInterface::STATUS_PENDING;
         $checkoutId = $response['id'];
