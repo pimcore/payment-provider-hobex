@@ -156,7 +156,7 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
         $client = new Client([
                 'base_uri' => $this->getStartPaymentURL(),
                 'headers' => [
-                    'Authorization:Bearer' => $this->config->getAuthorizationBearer(),
+                    'Authorization' => 'Bearer ' . $this->config->getAuthorizationBearer(),
                 ],
             ]
         );
@@ -282,7 +282,7 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
                 $client = new Client([
                         'base_uri' => $this->config->getHostURL() . $resourcePath,
                         'headers' => [
-                            'Authorization:Bearer' => $this->config->getAuthorizationBearer(),
+                            'Authorization' => 'Bearer: ' . $this->config->getAuthorizationBearer(),
                         ],
                     ]
                 );
