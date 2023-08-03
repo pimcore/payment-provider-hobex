@@ -266,9 +266,10 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
 
         try {
             $jsonResponse = null;
-            if ($response['base64Content']) {
+            if (array_key_exists('base64Content', $response) && $response['base64Content']) {
                 $jsonResponse = $this->handleWebhookResponse($response);
             }
+
             if (!$jsonResponse) {
                 $transactionId = $this->getExistingTransactionId($checkoutId);
                 if ($transactionId) {
@@ -289,15 +290,18 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
                 $response = $client->request('get', '?entityId=' . $this->config->getEntityId());
                 $jsonResponse = json_decode($response->getBody()->getContents(), true);
             }
+
             $this->logger->debug('Received JSON response in ' . self::class . '::handleResponse', $jsonResponse);
 
             $internalPaymentId = $jsonResponse['customParameters']['internalTransactionId'];
+
+            $merchantMemo = array_key_exists('merchantMemo', $jsonResponse) ? $jsonResponse['merchantMemo'] : '';
 
             $clearedParams = [
                 'paymentType' => $jsonResponse['paymentBrand'],
                 'amount' => $jsonResponse['amount'],
                 'currency' => $jsonResponse['currency'],
-                'merchantMemo' => $jsonResponse['merchantMemo'],
+                'merchantMemo' => $merchantMemo,
                 'paymentState' => $jsonResponse['result']['code'],
                 'extId' => $jsonResponse['id'],
                 'checkoutId' => $jsonResponse['ndc'],
