@@ -349,7 +349,7 @@ class Hobex extends AbstractPayment implements PaymentInterface, LoggerAwareInte
     /**
      * @inheritdoc
      */
-    public function setAuthorizedData(array $authorizedData)
+    public function setAuthorizedData(array $authorizedData): void
     {
         $this->authorizedData = $authorizedData;
     }
