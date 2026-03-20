@@ -10,7 +10,7 @@
   "minimum-stability": "dev",
   "require": {
     "php": "~8.4.0 || ~8.5.0",
-    "pimcore/ecommerce-framework-bundle": "^2026.1",
+    "pimcore/ecommerce-framework-bundle": "^1.0 || ^2026.1",
     "pimcore/pimcore": "^2026.1"
   },
   "require-dev": {
