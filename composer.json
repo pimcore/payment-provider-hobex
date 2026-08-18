@@ -2,7 +2,7 @@
   "name": "pimcore/payment-provider-hobex",
   "license": "GPL-3.0+",
   "type": "pimcore-bundle",
-  "description": "Pimcore Payment Provider - Hobex",
+  "description": "Pimcore Payment Provider - Hobex - not maintained",
   "config": {
     "sort-packages": true
   },
