@@ -4,7 +4,10 @@
   "type": "pimcore-bundle",
   "description": "Pimcore Payment Provider - Hobex",
   "config": {
-    "sort-packages": true
+    "sort-packages": true,
+    "audit": {
+      "block-insecure": false
+    }
   },
   "prefer-stable": true,
   "minimum-stability": "dev",
